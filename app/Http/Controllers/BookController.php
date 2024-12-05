@@ -21,7 +21,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        
+        //para api no se usa   
     }
 
     /**
