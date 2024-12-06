@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -11,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // Obtiene todos los usuarios junto con sus roles
+        $users = User::with('rol')->get();
+        return response()->json($users);
     }
 
     /**

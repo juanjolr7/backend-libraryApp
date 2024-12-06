@@ -9,6 +9,8 @@ class Rol extends Model
 {
     use HasFactory;
 
+    protected $table = 'roles'; // Define explícitamente el nombre de la tabla
+    
     protected $fillable = [
         'name'
     ];

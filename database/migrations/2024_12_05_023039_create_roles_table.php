@@ -16,6 +16,19 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::table('roles')->insert([
+            [
+                'name' => 'Administrador',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Cliente',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
     }
 
     /**

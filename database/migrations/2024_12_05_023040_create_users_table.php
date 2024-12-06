@@ -25,6 +25,23 @@ return new class extends Migration
                   
             $table->timestamps();
         });
+
+        DB::table('users')->insert([
+            [
+                'name' => 'Juan José López Rosado',
+                'email' => 'admin@gmail.com',
+                'password' => 'admin123',
+                'id_rol' => 1,
+                'created_at' => now()
+            ],
+            [
+                'name' => 'Franco Steve Sosa',
+                'email' => 'cliente@gmail.com',
+                'password' => 'cliente123',
+                'id_rol' => 2,
+                'created_at' => now()
+            ]
+        ]);
     }
 
     /**
