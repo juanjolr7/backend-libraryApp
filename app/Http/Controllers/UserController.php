@@ -30,7 +30,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:6',
+            'id_rol' => 'required|integer|exists:roles,id',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'id_rol' => $validated['id_rol'],
+            'created_at' => now()
+        ]);
+
+        return response()->json($user, 201);
     }
 
     /**
@@ -54,7 +69,26 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Usuario no encontrado.'], 404);
+        }
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6' // Si la contraseña no se actualiza, debe ser opcional
+        ]);
+
+        $user->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+            'updated_at' => now()
+        ]);
+
+        return response()->json(['message' => 'Usuario actualizado con éxito.', 'user' => $user], 200);
     }
 
     /**
@@ -62,6 +96,13 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'User no found'], 404);
+        }
+
+        $user->delete();
+        return response()->json(['message' => 'User deleted succesfully']);
     }
 }
