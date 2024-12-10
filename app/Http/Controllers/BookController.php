@@ -29,7 +29,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
             'descripcion' => 'required|string',
             'price' => 'required|numeric',
@@ -38,7 +39,16 @@ class BookController extends Controller
             'number_books' => 'required|integer|min:0',
         ]);
 
-        $book = Book::create($request->all());
+        $book = Book::create([
+            'title' => $validated['name'],
+            'description' => $validated['description'],
+            'price' => $validated['price'],
+            'id_category' => $validated['id_category'],
+            'id_author' => $validated['id_author'],
+            'number_books' => $validated['number_books'],
+            'created_at' => now()
+        ]);
+
         return response()->json($book, 201);
     }
 
