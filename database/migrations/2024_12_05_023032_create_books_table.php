@@ -33,6 +33,28 @@ return new class extends Migration
             $table->integer('number_books');
             $table->timestamps();
         });
+        DB::table('books')->insert([
+            [
+                'title' => 'TituloX',
+                'description' => 'admsda',
+                'price' => 22.2,
+                'id_category' => 1,
+                'id_author' => 1,
+                'number_books'=>4,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'title' => 'TituloY',
+                'description' => 'jghjty',
+                'price' => 55.99,
+                'id_category' => 2,
+                'id_author' => 2,
+                'number_books'=>10,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
     }
 
     /**

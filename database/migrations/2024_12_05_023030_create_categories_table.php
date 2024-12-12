@@ -17,6 +17,21 @@ return new class extends Migration
             $table->string('description');
             $table->timestamps();
         });
+        DB::table('categories')->insert([
+            [
+                'name' => 'Ciencia Ficción',
+                'description' => 'Alies,SciFi,StarWars,etc',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Romance',
+                'description' => 'Dramas,etc',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
     }
 
     /**

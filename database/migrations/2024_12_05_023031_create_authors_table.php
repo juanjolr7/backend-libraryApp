@@ -18,6 +18,22 @@ return new class extends Migration
             $table->string('biography');
             $table->timestamps();
         });
+        DB::table('authors')->insert([
+            [
+                'name' => 'Steven',
+                'nationality' => 'Mexicano',
+                'biography' => 'Escritor de SciFi',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Oscar',
+                'nationality' => 'Mexicano',
+                'biography' => 'Escritor de Romance',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
     }
 
     /**

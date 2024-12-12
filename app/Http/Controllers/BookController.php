@@ -32,7 +32,7 @@ class BookController extends Controller
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'description' => 'required|string',
             'price' => 'required|numeric',
             'id_category' => 'required|exists:categories,id',
             'id_author' => 'required|exists:authors,id',
@@ -40,7 +40,7 @@ class BookController extends Controller
         ]);
 
         $book = Book::create([
-            'title' => $validated['name'],
+            'title' => $validated['title'],
             'description' => $validated['description'],
             'price' => $validated['price'],
             'id_category' => $validated['id_category'],
@@ -85,7 +85,7 @@ class BookController extends Controller
 
         $request->validate([
             'title' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'description' => 'required|string',
             'price' => 'required|numeric',
             'id_category' => 'required|exists:categories,id',
             'id_author' => 'required|exists:authors,id',
