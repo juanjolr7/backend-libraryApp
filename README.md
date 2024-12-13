@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/2418839e-c65a-4669-bd39-81e3b5b22f44)<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 # Proyecto final "Librería Virtual"
 
 ## Objetivo del proyecto
